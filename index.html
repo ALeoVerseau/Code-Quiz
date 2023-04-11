@@ -12,26 +12,35 @@
 </head>
 
 <body>
-    <section class="container">
-        <figure id="question-container" class="hide">
+    <nav>
+        <a href="View-High-Scores"> View High Scores </a>
+        <h2 id="timer"></h2>
+    </nav>
 
-            <h1 id="question"> Question </h1>
-            <ol id="answer buttons" class="btn-grid">
-                <li> Answer 1</li>
-                <li> Answer 2</li>
-                <li> Answer 4</li>
-                <li> Answer 4</li>
-            </ol>
+    <main id="start" class="start">
+        <section>
 
-       
+            <h2 id="question-container"> Question </h2>
 
-            <div class="controls">
-                <button id="start-btn" class="start-btn button"> Start Quiz </button>
-            </div>
-            
-        </figure>
+        </section>
 
-    </section>
+        <section>
+
+           <ol id="answerEl">
+                <li class="choice" id="A" onclick="checkAnswer"> Answer A </li>
+                <li class="choice" id="B" onclick="checkAnswer"> Answer B </li>
+                <li class="choice" id="C" onclick="checkAnswer"> Answer C </li>
+                <li class="choice" id="D" onclick="checkAnswer"> Answer D </li>
+            </ol> 
+
+        </section>
+
+        <div id="buttonEl">
+                <button id="start-btn" class="start"> Start Quiz </button>
+                <button id="next-btn" class="next"> Next </button>
+        </div>
+
+    </main>
 
 </body>
 

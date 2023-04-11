@@ -1,15 +1,41 @@
-*, *::before, *::after {
+* {
+    /* using this to see the boxes */
     outline: green 1px solid;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+nav {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+}  
+
+body section {
+   display: grid;
+   place-items: center;
+}  
+   
+li {
+    margin: 10px;
+    padding: 5px;
 }
 
+#question-container {
+    visibility: hidden;
+}
 
+#answerEl {
+    visibility: hidden;
+}
 
+#buttonEl {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
 
+#next-btn {
+    visibility: hidden;
+}
