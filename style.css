@@ -2,6 +2,7 @@
     /* using this to see the boxes */
     outline: green 1px solid;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 nav {

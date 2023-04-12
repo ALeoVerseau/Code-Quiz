@@ -1,11 +1,13 @@
 var timeEl = document.getElementById("timer");
 var startButton = document.getElementById("start-btn");
 var questionEl = document.getElementById("question-container")
-var answerContainer = document.getElementById("answerEl")
-var ChoiceA = document.getElementById("A");
-var ChoiceB = document.getElementById("B");
-var ChoiceC = document.getElementById("C");
-var ChoiceD = document.getElementById("D");
+var answerEl = document.getElementById("answerEl")
+
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+
 var nextButton = document.getElementById("next-btn");
 
 let quizQuestions = [
@@ -15,7 +17,7 @@ let quizQuestions = [
         b: "Balenciaga",
         c: "Prada",
         d: "Miu Miu",
-        correct: "a",
+        correct: "Louis Vuitton",
     },    
     { 
         question: "What Brand is Italian?",
@@ -23,7 +25,7 @@ let quizQuestions = [
         b: "Saint Laurent",
         c: "Versace",
         d: "Chanel",
-        correct: "c",
+        correct: "Versace",
     },
     { 
         question: "Which is NOT a major fashion week?",
@@ -31,7 +33,7 @@ let quizQuestions = [
         b: "Tokyo",
         c: "New York",
         d: "Milan",
-        correct: "b",
+        correct: "Tokyo",
     },
     { 
         question: "What brand created the 'Little Black Dress' ",
@@ -39,34 +41,34 @@ let quizQuestions = [
         b: "Burberry",
         c: "Prada",
         d: "Chanel",
-        correct: "d",
+        correct: "Chanel",
     },
     
 ];
 
 var lastQuestion = quizQuestions.length -1;
-let runningQuestion = 0;
+let index = 0;
 
-function renderQuestion() {
-    let q = questionEl[runningQuestion];
+startButton.addEventListener("click", startGame);
+nextButton.addEventListener("click", nextQuestion);
 
-    questionEl.innerHTML = "<p>" + q.quizQuestions + "</p>";
-    choiceA.innerHTML = q.a;
-    ChoiceB.innerHTML = q.b; 
-    ChoiceC.innerHTML = q.c;
-    ChoiceD.innerHTML = q.d;
-    
-    renderQuestion();
-};
+    choiceA.addEventListener("click", (event) => checkAnswer(event))
+    choiceB.addEventListener("click", (event) => checkAnswer(event))
+    choiceC.addEventListener("click", (event) => checkAnswer(event))
+    choiceD.addEventListener("click", (event) => checkAnswer(event))
 
-startButton.addEventListener("click", startGame)
+function nextQuestion(){
+console.log("go to next question!!!")
+index++;
+renderQuestion()
+}
 
 function startGame() {
     console.log("Started");
     startButton.style.display = "none";
     nextButton.style.visibility = "visible";
     questionEl.style.visibility = "visible";
-    answerContainer.style.visibility = "visible";
+    answerEl.style.visibility = "visible";
 
     var secondsLeft = 60;
 
@@ -81,22 +83,52 @@ function startGame() {
         }
     }, 1000);
     };
-
+    renderQuestion();
     countdown();
+}
+
+function renderQuestion() {
+
+    console.log(quizQuestions);
+    // console.log(quizQuestions[0]);
+    //console.log(quizQuestions[0].question);
+
+    questionEl.textContent = quizQuestions[index].question;
+
+    // console.log(quizQuestions[0].a);
+
+    choiceA.textContent = quizQuestions[index].a;
+    choiceB.textContent = quizQuestions[index].b;
+    choiceC.textContent = quizQuestions[index].c;
+    choiceD.textContent = quizQuestions[index].d;
+
+    // let q = questionEl[quizQuestion];
+    // console.log(q);
+
+    // questionEl.innerHTML = "<p>" + q.quizQuestions + "</p>";
+    // choiceA.innerHTML = q.a;
+    // ChoiceB.innerHTML = q.b; 
+    // ChoiceC.innerHTML = q.c;
+    // ChoiceD.innerHTML = q.d;
+    
+};
+
+// checks wether the answer is correct or not.
+function checkAnswer(event){
+
+    console.log("This is  the correct answer: ",quizQuestions[0].correct);
+    console.log(event.target.textContent)
+    let usersChoice = event.target.textContent;
+
+    if(usersChoice === quizQuestions[0].correct){
+        console.log("CORRECT")
+    }else{
+        console.log("INCORRECT")
+        wrongAnswer();
+    }
+
 }
 
 function wrongAnswer() {
     secondsLeft --;
-}
-
-function checkAnswer(answer) {
-    if(answer == quizQuestions[runningQuestion].correct) {'';
-
-    } else {
-        wrongAnswer();
-    }
-    if(runningQuestion < lastQuestion) {
-        runningQuestion++;
-        renderQuestion();
-    }    
 }
