@@ -40,3 +40,7 @@ li {
 #next-btn {
     visibility: hidden;
 }
+
+#finalContainer {
+    display: none;
+}

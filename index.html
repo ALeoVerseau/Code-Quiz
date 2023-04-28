@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
-    
+
     <title> Code Quiz </title>
 
 </head>
 
 <body>
     <nav>
-        <a href="View-High-Scores"> View High Scores </a>
+        <a href="./highscores.html"> View High Scores </a>
         <h2 id="timer"></h2>
     </nav>
 
@@ -22,13 +23,13 @@
 
             <h2 id="question-container"> Question </h2>
 
-        
+
             <ol id="answerEl">
                 <li class="choice" id="A" onclick="checkAnswer"> Answer A </li>
                 <li class="choice" id="B" onclick="checkAnswer"> Answer B </li>
                 <li class="choice" id="C" onclick="checkAnswer"> Answer C </li>
                 <li class="choice" id="D" onclick="checkAnswer"> Answer D </li>
-            </ol> 
+            </ol>
 
         </section>
 
@@ -39,7 +40,18 @@
 
     </main>
 
+    <section id="finalContainer">
+        <h3> End of Quiz!
+            Your score is:
+            <span id="finalScore"></span>
+        </h3>
+        <input id="inputBox" type="text">
+        <button id="scoreButton"> Save Score </button>
+    </section>
+
+
 </body>
 
 <script defer src="script.js"></script>
+
 </html>
